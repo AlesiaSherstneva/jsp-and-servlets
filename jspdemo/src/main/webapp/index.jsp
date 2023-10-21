@@ -16,5 +16,13 @@ Is 75 less than 69? <%= 75 < 69 %>
         out.println("</br>I really luv2code: " + i);
     }
 %>
+<br><br>
+<h3>Java Declaration</h3>
+<%!
+    String makeItLower(String data) {
+        return data.toLowerCase();
+    }
+%>
+Lower case "Hello World": <%= makeItLower("Hello World") %>
 </body>
 </html>
