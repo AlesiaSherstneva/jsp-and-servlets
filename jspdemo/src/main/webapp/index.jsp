@@ -1,3 +1,4 @@
+<%@ page import="com.luv2code.jsp.*" %>
 <html>
 <body>
 <h3>Hello World of Java!</h3>
@@ -26,6 +27,6 @@ Is 75 less than 69? <%= 75 < 69 %>
 Lower case "Hello World": <%= makeItLower("Hello World") %>
 <br><br>
 <h3>Java class</h3>
-Let's have some fun: <%= com.luv2code.jsp.FunUtils.makeItLower("FUN FUN FUN")%>
+Let's have some fun: <%= makeItLower("FUN FUN FUN")%>
 </body>
 </html>
