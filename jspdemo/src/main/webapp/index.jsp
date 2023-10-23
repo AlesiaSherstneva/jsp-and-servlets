@@ -24,5 +24,8 @@ Is 75 less than 69? <%= 75 < 69 %>
     }
 %>
 Lower case "Hello World": <%= makeItLower("Hello World") %>
+<br><br>
+<h3>Java class</h3>
+Let's have some fun: <%= com.luv2code.jsp.FunUtils.makeItLower("FUN FUN FUN")%>
 </body>
 </html>
