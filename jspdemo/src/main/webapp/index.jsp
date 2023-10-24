@@ -28,5 +28,10 @@ Lower case "Hello World": <%= makeItLower("Hello World") %>
 <br><br>
 <h3>Java class</h3>
 Let's have some fun: <%= makeItLower("FUN FUN FUN")%>
+<br><br>
+<h3>Built-In Objects</h3>
+Request user agent: <%= request.getHeader("User-Agent") %>
+<br><br>
+Request language: <%= request.getLocale() %>
 </body>
 </html>
