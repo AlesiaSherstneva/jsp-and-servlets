@@ -1,9 +1,8 @@
 <%@ page import="com.luv2code.jsp.*" %>
 <html>
 <body>
+<jsp:include page="header.html"/>
 <h3>Hello World of Java!</h3>
-The time on the server is <%= new java.util.Date() %>
-<br><br>
 <h3>JSP Expressions</h3>
 Converting a string to uppercase: <%= "Hello World".toUpperCase() %>
 <br><br>
@@ -33,5 +32,6 @@ Let's have some fun: <%= makeItLower("FUN FUN FUN")%>
 Request user agent: <%= request.getHeader("User-Agent") %>
 <br><br>
 Request language: <%= request.getLocale() %>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>
