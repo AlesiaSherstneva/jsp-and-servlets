@@ -14,8 +14,10 @@ Favorite programming languages:
 <ul>
     <%
         String[] langs = request.getParameterValues("favoriteLanguages");
-        for (String tempLang : langs) {
-            out.println("<li>" + tempLang + "</li>");
+        if (langs != null) {
+            for (String tempLang : langs) {
+                out.println("<li>" + tempLang + "</li>");
+            }
         }
     %>
 </ul>
