@@ -7,5 +7,7 @@
 The student is confirmed: ${param.firstName} ${param.lastName}
 <br/><br/>
 The student's country: ${param.country}
+<br/><br/>
+The student's favorite programming language: ${param.favoriteLanguage}
 </body>
 </html>
