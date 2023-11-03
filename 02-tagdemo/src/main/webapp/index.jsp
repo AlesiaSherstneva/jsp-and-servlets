@@ -19,10 +19,20 @@ Time on the server is ${stuff}
 <c:forEach var="tempCity" items="${theCities}">
     ${tempCity}<br/>
 </c:forEach>
-<h3>Foreach example with list of Java objects</h3>
-<c:forEach var="tempStudent" items="${students}">
-    ${tempStudent.firstName} ${tempStudent.lastName} ${tempStudent.goldCustomer}
-    <br/>
-</c:forEach>
+<h3>Foreach table with list of Java objects</h3>
+<table border="1">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gold Customer</th>
+    </tr>
+    <c:forEach var="tempStudent" items="${students}">
+        <tr>
+            <td>${tempStudent.firstName}</td>
+            <td>${tempStudent.lastName}</td>
+            <td>${tempStudent.goldCustomer}</td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>
