@@ -30,13 +30,23 @@ Time on the server is ${stuff}
         <tr>
             <td>${tempStudent.firstName}</td>
             <td>${tempStudent.lastName}</td>
-            <td>
+<%--            <td>
                 <c:if test="${tempStudent.goldCustomer}">
                     Special Discount
                 </c:if>
                 <c:if test="${not tempStudent.goldCustomer}">
                     -
                 </c:if>
+            </td>--%>
+            <td>
+                <c:choose>
+                    <c:when test="${tempStudent.goldCustomer}">
+                        Special Discount
+                    </c:when>
+                    <c:otherwise>
+                        -
+                    </c:otherwise>
+                </c:choose>
             </td>
         </tr>
     </c:forEach>
