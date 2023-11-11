@@ -11,7 +11,7 @@ public class MvcDemoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String[] students = {"Susan", "Anil", "Mohamed", "Trupti"};
-        request.setAttribute("student-list", students);
+        request.setAttribute("student_list", students);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/view-students.jsp");
         dispatcher.forward(request, response);
