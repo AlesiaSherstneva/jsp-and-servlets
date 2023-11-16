@@ -1,8 +1,7 @@
 package com.luv2code.web;
 
 import jakarta.annotation.Resource;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,11 +15,11 @@ import java.sql.Statement;
 
 @WebServlet(name = "TestServlet", value = "/TestServlet")
 public class TestServlet extends HttpServlet {
-    @Resource(name="jdbc/web_student_tracker")
+    @Resource(mappedName = "java:/studentProject")
     private DataSource dataSource;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
 
         Connection connection;
@@ -29,7 +28,7 @@ public class TestServlet extends HttpServlet {
 
         try {
             connection = dataSource.getConnection();
-            String sql = "SELECT * FROM student;";
+            String sql = "SELECT * FROM student";
             statement = connection.createStatement();
 
             resultSet = statement.executeQuery(sql);
@@ -43,7 +42,7 @@ public class TestServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        doGet(request, response);
     }
 }
