@@ -1,21 +1,17 @@
-<%--suppress unchecked --%>
-<%@ page import="java.util.*, com.luv2code.web.*" %>
+<%--suppress ELValidationInspection --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Student Tracker App</title>
     <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
-<%
-    List<Student> theStudents = (List<Student>) request.getAttribute("student_list");
-%>
 <body>
 <div id="wrapper">
     <div id="header">
         <h2>FooBar University</h2>
     </div>
 </div>
-
 <div id="container">
     <div id="content">
         <table>
@@ -24,19 +20,13 @@
                 <th>Last Name</th>
                 <th>Email</th>
             </tr>
-            <% for (Student tempStudent : theStudents) { %>
-            <tr>
-                <td>
-                    <%= tempStudent.getFirstName() %>
-                </td>
-                <td>
-                    <%= tempStudent.getLastName() %>
-                </td>
-                <td>
-                    <%= tempStudent.getEmail() %>
-                </td>
-            </tr>
-            <% } %>
+            <c:forEach var="tempStudent" items="${student_list}">
+                <tr>
+                    <td> ${tempStudent.firstName} </td>
+                    <td> ${tempStudent.lastName} </td>
+                    <td> ${tempStudent.email} </td>
+                </tr>
+            </c:forEach>
         </table>
     </div>
 </div>
