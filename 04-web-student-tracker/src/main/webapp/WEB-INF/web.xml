@@ -5,7 +5,7 @@
     <display-name>web-student-tracker</display-name>
 
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>StudentControllerServlet</welcome-file>
     </welcome-file-list>
 
 </web-app>
