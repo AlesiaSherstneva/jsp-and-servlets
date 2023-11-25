@@ -16,13 +16,10 @@ public class StudentControllerServlet extends HttpServlet {
     private DataSource dataSource;
 
     @Override
-    public void init() throws ServletException {
+    @SneakyThrows
+    public void init() {
         super.init();
-        try {
-            studentDbUtil = new StudentDbUtil(dataSource);
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+        studentDbUtil = new StudentDbUtil(dataSource);
     }
 
     @SneakyThrows
