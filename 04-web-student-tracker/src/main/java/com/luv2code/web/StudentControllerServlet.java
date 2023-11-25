@@ -25,6 +25,36 @@ public class StudentControllerServlet extends HttpServlet {
     @SneakyThrows
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        String theCommand = request.getParameter("command");
+        if (theCommand == null) {
+            theCommand = "LIST";
+        }
+
+        switch (theCommand) {
+            case "LIST":
+                listStudents(request, response);
+                break;
+            case "ADD":
+                addStudents(request, response);
+                break;
+            default:
+                listStudents(request, response);
+        }
+    }
+
+    private void addStudents(HttpServletRequest request, HttpServletResponse response) {
+        Student theStudent = new Student(
+                request.getParameter("firstName"),
+                request.getParameter("lastName"),
+                request.getParameter("email")
+        );
+        studentDbUtil.addStudent(theStudent);
+
+        listStudents(request, response);
+    }
+
+    @SneakyThrows
+    private void listStudents(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("student_list", studentDbUtil.getStudents());
         RequestDispatcher dispatcher = request.getRequestDispatcher("list-students.jsp");
         dispatcher.forward(request, response);
