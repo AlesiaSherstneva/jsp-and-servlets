@@ -1,9 +1,11 @@
 package com.luv2code.web;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -53,6 +55,26 @@ public class StudentDbUtil {
             }
         } catch (Exception exception) {
             exception.printStackTrace();
+        }
+    }
+
+    @SneakyThrows
+    public void addStudent(Student theStudent) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            connection = dataSource.getConnection();
+            String sql = "INSERT INTO student (first_name, last_name, email) values (?, ?, ?)";
+
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, theStudent.getFirstName());
+            statement.setString(2, theStudent.getLastName());
+            statement.setString(3, theStudent.getEmail());
+
+            statement.execute();
+        } finally {
+            close(connection, statement, null);
         }
     }
 }
