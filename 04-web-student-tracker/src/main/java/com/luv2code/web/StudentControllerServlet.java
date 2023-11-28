@@ -37,9 +37,21 @@ public class StudentControllerServlet extends HttpServlet {
             case "ADD":
                 addStudents(request, response);
                 break;
+            case "LOAD":
+                loadStudent(request, response);
+                break;
             default:
                 listStudents(request, response);
         }
+    }
+
+    @SneakyThrows
+    private void loadStudent(HttpServletRequest request, HttpServletResponse response) {
+        String theStudentId = request.getParameter("studentId");
+        Student theStudent = studentDbUtil.getStudent(theStudentId);
+        request.setAttribute("the_student", theStudent);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("update-student-form.jsp");
+        dispatcher.forward(request, response);
     }
 
     private void addStudents(HttpServletRequest request, HttpServletResponse response) {
