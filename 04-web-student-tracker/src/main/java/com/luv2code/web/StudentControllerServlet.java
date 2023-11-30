@@ -40,9 +40,25 @@ public class StudentControllerServlet extends HttpServlet {
             case "LOAD":
                 loadStudent(request, response);
                 break;
+            case "UPDATE":
+                updateStudent(request, response);
+                break;
             default:
                 listStudents(request, response);
         }
+    }
+
+    @SneakyThrows
+    private void updateStudent(HttpServletRequest request, HttpServletResponse response) {
+        Student theStudent = new Student(
+                Integer.parseInt(request.getParameter("studentId")),
+                request.getParameter("firstName"),
+                request.getParameter("lastName"),
+                request.getParameter("email")
+        );
+        studentDbUtil.updateStudent(theStudent);
+
+        listStudents(request, response);
     }
 
     @SneakyThrows
