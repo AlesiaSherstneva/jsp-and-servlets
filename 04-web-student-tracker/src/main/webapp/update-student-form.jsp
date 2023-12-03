@@ -16,7 +16,7 @@
     <h3>Update Student</h3>
     <form action="StudentControllerServlet" method="GET">
         <input type="hidden" name="command" value="UPDATE">
-        <input type="hidden" name="studentId" value=""${the_student.id}"">
+        <input type="hidden" name="studentId" value="${the_student.id}">
         <table>
             <tbody>
             <tr>
