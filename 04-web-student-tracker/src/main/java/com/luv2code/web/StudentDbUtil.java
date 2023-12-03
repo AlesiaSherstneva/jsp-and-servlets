@@ -91,6 +91,7 @@ public class StudentDbUtil {
 
             connection = dataSource.getConnection();
             String sql = "SELECT * FROM student WHERE id = ?";
+
             statement = connection.prepareStatement(sql);
             statement.setInt(1, studentId);
 
@@ -110,5 +111,26 @@ public class StudentDbUtil {
             close(connection, statement, resultSet);
         }
 
+    }
+
+    @SneakyThrows
+    public void updateStudent(Student theStudent) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            connection = dataSource.getConnection();
+            String sql = "UPDATE student " +
+                    "SET first_name = ?, last_name = ?, email = ? WHERE id = ?";
+
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, theStudent.getFirstName());
+            statement.setString(2, theStudent.getLastName());
+            statement.setString(3, theStudent.getEmail());
+            statement.setInt(4, theStudent.getId());
+            statement.execute();
+        } finally {
+            close(connection, statement, null);
+        }
     }
 }
