@@ -133,4 +133,22 @@ public class StudentDbUtil {
             close(connection, statement, null);
         }
     }
+
+    @SneakyThrows
+    public void deleteStudent(String theStudentId) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            connection = dataSource.getConnection();
+            String sql = "DELETE FROM student WHERE id = ?";
+
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, Integer.parseInt(theStudentId));
+            statement.execute();
+
+        } finally {
+            close(connection, statement, null);
+        }
+    }
 }
