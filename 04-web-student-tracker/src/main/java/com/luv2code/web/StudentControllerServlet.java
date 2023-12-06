@@ -46,7 +46,7 @@ public class StudentControllerServlet extends HttpServlet {
                 deleteStudent(request, response);
                 break;
             default:
-                listStudents(request, response);
+                throw new IllegalAccessException(String.format("Unknown operation: %s", theCommand));
         }
     }
 
