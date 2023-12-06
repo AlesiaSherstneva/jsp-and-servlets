@@ -42,10 +42,18 @@ public class StudentControllerServlet extends HttpServlet {
                 break;
             case "UPDATE":
                 updateStudent(request, response);
+            case "DELETE":
+                deleteStudent(request, response);
                 break;
             default:
                 listStudents(request, response);
         }
+    }
+
+    @SneakyThrows
+    private void deleteStudent(HttpServletRequest request, HttpServletResponse response) {
+        studentDbUtil.deleteStudent(request.getParameter("studentId"));
+        listStudents(request, response);
     }
 
     @SneakyThrows
