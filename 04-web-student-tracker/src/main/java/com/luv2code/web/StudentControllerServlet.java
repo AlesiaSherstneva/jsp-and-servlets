@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.*;
 import lombok.SneakyThrows;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 @WebServlet(name = "StudentControllerServlet", value = "/StudentControllerServlet")
 public class StudentControllerServlet extends HttpServlet {
@@ -45,9 +46,21 @@ public class StudentControllerServlet extends HttpServlet {
             case "DELETE":
                 deleteStudent(request, response);
                 break;
+            case "SEARCH":
+                searchStudents(request, response);
+                break;
             default:
                 throw new IllegalAccessException(String.format("Unknown operation: %s", theCommand));
         }
+    }
+
+    @SneakyThrows
+    private void searchStudents(HttpServletRequest request, HttpServletResponse response) {
+        String theSearchName = request.getParameter("theSearchName");
+        List<Student> students = studentDbUtil.searchStudents(theSearchName);
+        request.setAttribute("student_list", students);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/list-students.jsp");
+        dispatcher.forward(request, response);
     }
 
     @SneakyThrows
